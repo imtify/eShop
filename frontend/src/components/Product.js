@@ -16,7 +16,7 @@ const Product = ({ product }) => {
   };
   return (
     <Card
-      className="mb-4 border-0 shadow-sm position-relative"
+      className="mb-4 border-1 shadow-sm position-relative"
       onMouseEnter={() => handleMouseEnter(product._id)}
       onMouseLeave={handleMouseLeave}
     >
@@ -41,7 +41,7 @@ const Product = ({ product }) => {
         ></div>
       </div>
       <Card.Body className="p-3">
-        <Card.Title className="h5">{product.name}</Card.Title>
+        <Card.Title className="product-title">{product.name}</Card.Title>
         <Card.Text as="div">
           <Rating
             value={product.rating}
