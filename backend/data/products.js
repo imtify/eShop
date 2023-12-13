@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: "1",
     name: "Apple MacBook Pro 2023",
     image: "/images/airpods.jpg",
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 120,
   },
   {
-    _id: "2",
     name: "Dell XPS 15",
     image: "/images/alexa.jpg",
     description:
@@ -26,7 +24,6 @@ const products = [
     numReviews: 95,
   },
   {
-    _id: "3",
     name: "HP Spectre x360",
     image: "/images/camera.jpg",
     description:
@@ -39,7 +36,6 @@ const products = [
     numReviews: 85,
   },
   {
-    _id: "4",
     name: "Lenovo ThinkPad X1 Carbon",
     image: "/images/mouse.jpg",
     description:
@@ -52,7 +48,6 @@ const products = [
     numReviews: 75,
   },
   {
-    _id: "5",
     name: "Asus ROG Zephyrus G14",
     image: "/images/phone.jpg",
     description:
@@ -65,7 +60,6 @@ const products = [
     numReviews: 90,
   },
   {
-    _id: "6",
     name: "Microsoft Surface Laptop Studio",
     image: "/images/playstation.jpg",
     description:
