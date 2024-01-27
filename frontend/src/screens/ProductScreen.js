@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Rating from "../components/Rating";
 import {
   Row,
@@ -19,7 +19,7 @@ import { addToCart, selectCart } from "../slices/cartSlice";
 const ProductScreen = () => {
   const { id: productId } = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const [qty, setQty] = useState(1);
 
   const {
