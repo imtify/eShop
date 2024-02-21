@@ -10,11 +10,11 @@ import {
   Button,
   Form,
 } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import { addToCart, selectCart } from "../slices/cartSlice";
+import { addToCart } from "../slices/cartSlice";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -31,11 +31,6 @@ const ProductScreen = () => {
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
   };
-
-  const { cartItems } = useSelector(selectCart);
-  console.log(cartItems);
-
-  console.log(typeof product?.price);
 
   return (
     <>

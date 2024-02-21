@@ -11,13 +11,13 @@ import {
 } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import Message from "../components/Message";
-import { addToCart, removeFromCart, selectCart } from "../slices/cartSlice";
+import { addToCart, removeFromCart } from "../slices/cartSlice";
 
 const CartScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { cartItems } = useSelector(selectCart);
+  const { cartItems } = useSelector((state) => state.cart);
 
   // NOTE: no need for an async function here as we are not awaiting the
   // resolution of a Promise
@@ -32,6 +32,7 @@ const CartScreen = () => {
   const checkoutHandler = () => {
     navigate("/login?redirect=/shipping");
   };
+  console.log(cartItems);
 
   return (
     <Row>
