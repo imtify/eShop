@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import {
   useGetProductsQuery,
   useCreateProductMutation,
+  useDeleteProductMutation,
 } from "../../slices/productsApiSlice";
 
 const ProductListScreen = () => {
@@ -15,12 +16,24 @@ const ProductListScreen = () => {
   const [createProduct, { isLoading: loadingCreate }] =
     useCreateProductMutation();
 
-  const deleteHandler = async (id) => {};
+  const [deleteProduct, { isLoading: loadingDelete }] =
+    useDeleteProductMutation();
 
   const createProductHandler = async () => {
     if (window.confirm("Are you sure to a a new product?")) {
       try {
         await createProduct();
+        refetch();
+      } catch (error) {
+        toast.error(error?.data?.message || error.message);
+      }
+    }
+  };
+
+  const deleteProductHandler = async (productId) => {
+    if (window.confirm("Are you sure to delete the product?")) {
+      try {
+        await deleteProduct(productId);
         refetch();
       } catch (error) {
         toast.error(error?.data?.message || error.message);
@@ -41,6 +54,7 @@ const ProductListScreen = () => {
         </Col>
       </Row>
       {loadingCreate && <Loader />}
+      {loadingDelete && <Loader />}
 
       {isLoading ? (
         <Loader />
@@ -56,7 +70,7 @@ const ProductListScreen = () => {
                 <th>PRICE</th>
                 <th>CATEGORY</th>
                 <th>BRAND</th>
-                <th></th>
+                <th>ACTION</th>
               </tr>
             </thead>
             <tbody>
@@ -76,7 +90,7 @@ const ProductListScreen = () => {
                     <Button
                       variant="danger"
                       className="btn-sm"
-                      onClick={() => deleteHandler(product._id)}
+                      onClick={() => deleteProductHandler(product._id)}
                     >
                       <FaTrash style={{ color: "white" }} />
                     </Button>

@@ -27,6 +27,7 @@ const Product = ({ product }) => {
             src={product.image}
             alt={product.name}
             className="img-fluid rounded-top"
+            style={{ width: "400px", height: "250px" }}
           />
         </Link>
 
