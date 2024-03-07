@@ -10,7 +10,8 @@
     "client": "yarn --cwd frontend start",
     "dev": "yarn concurrently \"yarn run server\" \"yarn run client\"",
     "data:import": "node backend/seeder.js",
-    "data:destroy": "node backend/seeder.js -d"
+    "data:destroy": "node backend/seeder.js -d",
+    "build": "yarn install && yarn --cwd frontend install && yarn --cwd frontend build"
   },
   "repository": "https://github.com/imtify/eshop.git",
   "author": "Imtiaz Limon",
