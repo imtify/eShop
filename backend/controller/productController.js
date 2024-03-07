@@ -4,11 +4,22 @@ import Product from "../models/productModel.js";
 //Fetch Products by route GET/api/products in private
 
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({});
-  res.json(products);
+  const pageSize = 8;
+  const page = Number(req.query.pageNumber) || 1;
+
+  const keyword = req.query.keyword
+    ? { name: { $regex: req.query.keyword, $options: "i" } }
+    : {};
+
+  const count = await Product.countDocuments({ ...keyword });
+
+  const products = await Product.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+  res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
-//Fetch Products by ID through route GET/api/products/:id in private
+//Fetch Products by ID through  route GET/api/products/:id in private
 const getProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
@@ -23,7 +34,7 @@ const getProductById = asyncHandler(async (req, res) => {
 //Create Product by route POST/api/products in private
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
-    name: "Sample name",
+    name: "Sample",
     price: 0,
     user: req.user._id,
     image: "/images/sample.jpg",
@@ -78,6 +89,8 @@ const deleteProduct = asyncHandler(async (req, res) => {
 const createProductReview = asyncHandler(async (req, res) => {
   const { rating, comment } = req.body;
 
+  console.log(req);
+
   const product = await Product.findById(req.params.id);
   if (product) {
     const alreadyReviewed = product.reviews.find(
@@ -87,7 +100,6 @@ const createProductReview = asyncHandler(async (req, res) => {
       res.status(400);
       throw new Error("Already Reviewed");
     }
-
     const review = {
       name: req.user.name,
       rating: Number(rating),
@@ -95,9 +107,7 @@ const createProductReview = asyncHandler(async (req, res) => {
       user: req.user._id,
     };
     product.reviews.push(review);
-
     product.numReviews = product.reviews.length;
-
     product.rating =
       product.reviews.reduce((acc, item) => item.rating + acc, 0) /
       product.reviews.length;
@@ -109,6 +119,12 @@ const createProductReview = asyncHandler(async (req, res) => {
   }
 });
 
+//Get top product GET/api/products/top in private
+const getTopProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(3);
+  res.json(products);
+});
+
 export {
   getProducts,
   getProductById,
@@ -116,4 +132,5 @@ export {
   updateProduct,
   deleteProduct,
   createProductReview,
+  getTopProducts,
 };

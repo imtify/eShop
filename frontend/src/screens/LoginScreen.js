@@ -74,7 +74,7 @@ const LoginScreen = () => {
       </Form>
       <Row className="mt-2">
         <Col>
-          New Customer ?{" "}
+          New Customer ?
           <Link to={redirect ? `/register?redirect=${redirect}` : "/register"}>
             Register
           </Link>

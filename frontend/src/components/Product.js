@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Card, Button } from "react-bootstrap";
-import { FaShoppingCart } from "react-icons/fa";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
 
@@ -50,23 +49,6 @@ const Product = ({ product }) => {
           />
         </Card.Text>
         <Card.Text className="text-muted mb-2">${product.price}</Card.Text>
-        {hoveredProductId === product._id && (
-          <Button
-            variant="primary"
-            className="position-absolute top-50 start-50 translate-middle"
-            style={{
-              width: "50px",
-              height: "50px",
-              borderRadius: "50%",
-              transform: "translate(-50%, -50%)",
-              top: "50%",
-              left: "50%",
-              marginTop: "-50px",
-            }}
-          >
-            <FaShoppingCart style={{ fontSize: "24px", color: "#fff" }} />
-          </Button>
-        )}
       </Card.Body>
     </Card>
   );

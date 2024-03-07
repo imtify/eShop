@@ -8,6 +8,7 @@ import CheckoutSteps from "../components/CheckoutSteps";
 import Loader from "../components/Loader";
 import { useCreateOrderMutation } from "../slices/ordersApiSlice";
 import { clearCartItems } from "../slices/cartSlice";
+import Meta from "../components/Meta";
 
 const PlaceOrderScreen = () => {
   const navigate = useNavigate();
@@ -46,6 +47,7 @@ const PlaceOrderScreen = () => {
 
   return (
     <>
+      <Meta title="Place Order" />
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
         <Col md={8}>
