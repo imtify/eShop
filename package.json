@@ -7,11 +7,11 @@
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
-    "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "yarn --cwd frontend start",
+    "dev": "yarn concurrently \"yarn run server\" \"yarn run client\"",
     "data:import": "node backend/seeder.js",
     "data:destroy": "node backend/seeder.js -d",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+    "build": "yarn install && yarn --cwd frontend install && yarn --cwd frontend build"
   },
   "repository": "https://github.com/imtify/eshop.git",
   "author": "Imtiaz Limon",
