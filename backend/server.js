@@ -12,8 +12,6 @@ import orderRoutes from "./routes/orderRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 connectDB();
 
-const port = process.env.PORT || 5000;
-
 const app = express();
 
 //body parser middleware
