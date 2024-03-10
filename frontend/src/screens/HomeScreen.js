@@ -19,7 +19,6 @@ const HomeScreen = () => {
 
   return (
     <>
-      <h2>Top Rated</h2>
       {!keyword ? (
         <ProductCarousel />
       ) : (
