@@ -114,7 +114,11 @@ const ProductScreen = () => {
                   <ListGroup.Item>
                     <Row>
                       <Col>Status:</Col>
-                      <Col>
+                      <Col
+                        className={
+                          product.countInStock === 0 ? "text-danger" : ""
+                        }
+                      >
                         {product.countInStock > 0 ? "In Stock" : "Out Of Stock"}
                       </Col>
                     </Row>

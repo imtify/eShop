@@ -18,6 +18,8 @@ const ProductListScreen = () => {
     pageNumber,
   });
 
+  console.log(data);
+
   const [createProduct, { isLoading: loadingCreate }] =
     useCreateProductMutation();
 
@@ -104,7 +106,12 @@ const ProductListScreen = () => {
               ))}
             </tbody>
           </Table>
-          <Paginate pages={data.pages} page={data.page} isAdmin={true} />
+          <Paginate
+            pages={data.pages}
+            type="productlist"
+            page={data.page}
+            isAdmin={true}
+          />
         </>
       )}
     </>
