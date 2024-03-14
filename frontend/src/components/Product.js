@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 
 const Product = ({ product }) => {
   const [showQtyButtons, setShowQtyButtons] = useState(false);
+  const [showCartIcon, setShowCartIcon] = useState(false);
   const [qty, setQty] = useState(() => {
     const storedQty = localStorage.getItem(`product_${product._id}_qty`);
     return storedQty ? parseInt(storedQty) : 1;
@@ -48,7 +49,11 @@ const Product = ({ product }) => {
 
   return (
     <Card className="mb-4 border-1 shadow-sm position-relative">
-      <div className="position-relative">
+      <div
+        className="position-relative"
+        onMouseEnter={() => setShowCartIcon(true)}
+        onMouseLeave={() => setShowCartIcon(false)}
+      >
         <Link to={`/product/${product._id}`}>
           <Card.Img
             variant="top"
@@ -58,7 +63,7 @@ const Product = ({ product }) => {
             style={{ width: "400px", height: "250px" }}
           />
         </Link>
-        {!showQtyButtons && (
+        {showCartIcon && !showQtyButtons && (
           <Button
             className="position-absolute top-50 start-50 translate-middle"
             style={{ zIndex: 1, background: "black", border: "none" }}
@@ -91,7 +96,7 @@ const Product = ({ product }) => {
         {showQtyButtons && (
           <div
             className="position-absolute top-0 start-0 w-100 h-100 bg-black"
-            style={{ zIndex: 2, opacity: 0.1, pointerEvents: "none" }}
+            style={{ zIndex: 2, opacity: 0.5, pointerEvents: "none" }}
           ></div>
         )}
       </div>
