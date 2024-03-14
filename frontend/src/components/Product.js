@@ -73,7 +73,10 @@ const Product = ({ product }) => {
           </Button>
         )}
         {showQtyButtons && (
-          <div className="position-absolute top-50 start-50 translate-middle">
+          <div
+            className="position-absolute top-50 start-50 translate-middle"
+            style={{ zIndex: 2 }}
+          >
             <Button
               variant="outline-primary"
               size="sm"
@@ -96,7 +99,7 @@ const Product = ({ product }) => {
         {showQtyButtons && (
           <div
             className="position-absolute top-0 start-0 w-100 h-100 bg-black"
-            style={{ zIndex: 2, opacity: 0.5, pointerEvents: "none" }}
+            style={{ zIndex: 1, opacity: 0.5 }}
           ></div>
         )}
       </div>
