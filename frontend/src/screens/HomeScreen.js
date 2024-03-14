@@ -40,7 +40,7 @@ const HomeScreen = () => {
           <Meta title="eShop - Your Trusted Shopping Place " />
           <h2>Top Rated</h2>
           <Row>
-            {topProducts.map((product) => (
+            {topProducts?.map((product) => (
               <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                 <Product product={product} />
               </Col>
