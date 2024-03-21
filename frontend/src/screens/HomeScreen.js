@@ -25,7 +25,17 @@ const HomeScreen = () => {
   return (
     <>
       {!keyword ? (
-        <ProductCarousel />
+        <>
+          <ProductCarousel />
+          <h2>Top Rated</h2>
+          <Row>
+            {topProducts?.map((product) => (
+              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                <Product product={product} />
+              </Col>
+            ))}
+          </Row>
+        </>
       ) : (
         <Link to="/" className="btn btn-light mb-4">
           Go Back
@@ -38,16 +48,9 @@ const HomeScreen = () => {
       ) : (
         <>
           <Meta title="eShop - Your Trusted Shopping Place " />
-          <h2>Top Rated</h2>
-          <Row>
-            {topProducts?.map((product) => (
-              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                <Product product={product} />
-              </Col>
-            ))}
-          </Row>
+
           <hr />
-          <h2>New Arrivals</h2>
+          <h2>Products</h2>
           <Row>
             {data.products.map((product) => (
               <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
