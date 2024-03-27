@@ -5,10 +5,9 @@ import { toast } from "react-toastify";
 import Loader from "../components/Loader";
 import { useProfileMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
-import { LinkContainer } from "react-router-bootstrap";
 import ProfileMenu from "../components/ProfileMenu";
 
-const ProfileScreen = () => {
+const AccountSettingScreen = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -45,7 +44,7 @@ const ProfileScreen = () => {
   };
 
   return (
-    <Row className="px-4">
+    <Row className="px-4 flex-row">
       <ProfileMenu />
       <Col md={8}>
         <h2>User Profile</h2>
@@ -96,4 +95,4 @@ const ProfileScreen = () => {
   );
 };
 
-export default ProfileScreen;
+export default AccountSettingScreen;
