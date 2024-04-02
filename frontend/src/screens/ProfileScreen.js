@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import Loader from "../components/Loader";
 import { useProfileMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
-import { LinkContainer } from "react-router-bootstrap";
 import ProfileMenu from "../components/ProfileMenu";
 
 const ProfileScreen = () => {
